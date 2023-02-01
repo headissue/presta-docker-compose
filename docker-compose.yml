@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  db:
+    image: mariadb:latest
+    container_name: prestashop-db
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "rootpw"
+    volumes:
+      - './mariadb_data:/var/lib/mysql'
+  shop:
+    image: prestashop/prestashop:8.0.1
+    container_name: shop1
+    ports:
+      - "8881:80"
+    depends_on:
+      - db
+    environment:
+      MYSQL_ROOT_PASSWORD: "rootpw"
+      PS_DEV_MODE: "1"
+      DB_SERVER: "prestashop-db"
+      DB_USER: "shopuser"
+      DB_PASSWD: "shoppw"
+      DB_PREFIX: "ps_"
+      DB_NAME: "shop1"
+      PS_INSTALL_AUTO: "1"
+      PS_LANGUAGE: "en"
+      PS_COUNTRY: "de"
+    volumes:
+      - './shop1_data:/var/www'
+
+
+
+
+
+
+
+
+
+
