@@ -1,0 +1,4 @@
+CREATE DATABASE shop1 COLLATE utf8mb4_general_ci;
+CREATE USER "shopuser" IDENTIFIED BY "shoppw";
+GRANT ALL PRIVILEGES ON shop1.* TO "shopuser";
+FLUSH PRIVILEGES;
