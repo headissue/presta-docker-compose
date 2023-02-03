@@ -28,18 +28,9 @@ services:
       PS_INSTALL_AUTO: "1"
       PS_LANGUAGE: "en"
       PS_COUNTRY: "de"
-      PS_FOLDER_ADMIN: "admin074glnyfjklwzhcgnrk"
+      PS_FOLDER_ADMIN: "admin"
       ADMIN_MAIL: "demo@prestashop.com"
       ADMIN_PASSWD: "prestashop_demo"
     volumes:
       - './shop1_data:/var/www'
-
-
-
-
-
-
-
-
-
 
