@@ -31,29 +31,29 @@ function get_from_github_release_zip() {
 
 function get_dependencies() {
   get_from_github_release_zip \
-  "https://github.com/Oksydan/falcon/releases/download/v3.0.1/falcon.zip" \
-  "Oksydan/falcon" \
-  "3.0.1"
+    "https://github.com/Oksydan/falcon/releases/download/v3.0.1/falcon.zip" \
+    "Oksydan/falcon" \
+    "3.0.1"
 
   get_from_github_release_zip \
-  "https://github.com/Oksydan/is_themecore/releases/download/v3.0.1/is_themecore.zip" \
-  "Oksydan/is_themecore" \
-  "3.0.1"
+    "https://github.com/Oksydan/is_themecore/releases/download/v3.0.1/is_themecore.zip" \
+    "Oksydan/is_themecore" \
+    "3.0.1"
 
   get_from_github_release_zip \
-  "https://github.com/Oksydan/is_imageslider/releases/download/v2.0.1/is_imageslider.zip" \
-  "Oksydan/is_imageslider" \
-  "2.0.1"
+    "https://github.com/Oksydan/is_imageslider/releases/download/v2.0.1/is_imageslider.zip" \
+    "Oksydan/is_imageslider" \
+    "2.0.1"
 
   get_from_github_release_zip \
-  "https://github.com/Oksydan/is_searchbar/releases/download/v2.0.0/is_searchbar.zip" \
-  "Oksydan/is_searchbar" \
-  "2.0.0"
+    "https://github.com/Oksydan/is_searchbar/releases/download/v2.0.0/is_searchbar.zip" \
+    "Oksydan/is_searchbar" \
+    "2.0.0"
 
   get_from_github_release_zip \
-  "https://github.com/Oksydan/is_shoppingcart/releases/download/v2.0.0/is_shoppingcart.zip" \
-  "Oksydan/is_shoppingcart" \
-  "2.0.0"
+    "https://github.com/Oksydan/is_shoppingcart/releases/download/v2.0.0/is_shoppingcart.zip" \
+    "Oksydan/is_shoppingcart" \
+    "2.0.0"
 }
 
 function start_services() {
@@ -78,9 +78,11 @@ function copy_modules() {
   sudo chown -R www-data:www-data shop1_data/html/modules
 }
 
-function copy_themes() {
+function enable_theme() {
   cp -r vendor/Oksydan/falcon-3.0.2 shop1_data/html/themes/falcon
   sudo chown -R www-data:www-data shop1_data/html/themes
+  docker exec -it shop1 \
+    runuser -u www-data php bin/console prestashop:theme:enable falcon
 }
 
 stop_services
@@ -89,4 +91,4 @@ start_services
 set_permissions
 get_dependencies
 copy_modules
-copy_themes
+enable_theme
