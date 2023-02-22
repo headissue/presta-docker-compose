@@ -4,7 +4,7 @@ run
 docker-compose up
 ```
 open [index](http://localhost:8881), you should see an example shop  
-open [admin](http://localhost:8881/admin074glnyfjklwzhcgnrk), you should be able to log in with `demo@prestashop.com` - `prestashop_demo`  
+open [admin](http://localhost:8881/admdev), you should be able to log in with `demo@prestashop.com` - `prestashop_demo`  
 
 ## Interact with the database
 
