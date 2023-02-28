@@ -11,7 +11,9 @@ services:
       - './mariadb_data:/var/lib/mysql'
       - './mariadb_init:/docker-entrypoint-initdb.d'
   shop:
-    image: prestashop/prestashop:8.0.1
+    build:
+      dockerfile: ./Dockerfile
+      context: .
     container_name: shop1
     ports:
       - "8881:80"
